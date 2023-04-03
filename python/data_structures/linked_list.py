@@ -1,3 +1,4 @@
+
 class LinkedList:
     """
     Put docstring here
