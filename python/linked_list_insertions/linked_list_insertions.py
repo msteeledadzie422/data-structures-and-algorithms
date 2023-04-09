@@ -50,13 +50,18 @@ class LinkedList:
         current.next = node
 
     def insert_before(self, value, new_value):
-        if self.head is not None and self.head.value == value:
+        if self.head is None:
+            raise TargetError("The linked list is empty.")
+        if self.head.value == value:
             self.head = Node(new_value, self.head)
             return
         current = self.head
         while current.next is not None and current.next.value != value:
             current = current.next
+        if current.next is None:
+            raise TargetError(f"Target value {value} not found in the linked list.")
         current.next = Node(new_value, current.next)
+
 
     def insert_after(self, value, new_value):
         current = self.head
@@ -64,6 +69,8 @@ class LinkedList:
             current = current.next
         if current is not None:
             current.next = Node(new_value, current.next)
+        else:
+            raise TargetError
 
     # def __str__(self):
     #     current = self.head
@@ -83,10 +90,8 @@ class Node:
     # Node.value = 3
     # Node._next = node2
 
-class TargetError:
-    """
-    Doc String GOes Here
-    """
+
+class TargetError(Exception):
     pass
 
 
