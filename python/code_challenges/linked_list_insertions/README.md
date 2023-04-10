@@ -17,7 +17,7 @@ insert after
 * adds a new node with the given new value immediately after the first node that has the value specified
 
 ## Whiteboard Process
-![Whiteboard](./insertions.png)
+![Whiteboard](insertions.png)
 
 ## Approach & Efficiency
 Append Method: Traverse the Linked List until current.next is found to be Null, at which point set the value of current.next to our provided insertion value.
