@@ -1,5 +1,5 @@
 import pytest
-from code_challenges.stack_queue_animal_shelter.stack_queue_animal_shelter import Animal, AnimalShelter, Queue
+from code_challenges.stack_queue_animal_shelter.stack_queue_animal_shelter import Animal, AnimalShelterTest, Queue
 
 
 # @pytest.mark.skip("TODO")
