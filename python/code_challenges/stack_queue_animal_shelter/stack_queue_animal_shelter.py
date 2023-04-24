@@ -11,7 +11,7 @@ class Queue:
         self.back = None
 
 
-class AnimalShelter:
+class AnimalShelterTest:
     def __init__(self):
         self.cats = Queue()
         self.dogs = Queue()
