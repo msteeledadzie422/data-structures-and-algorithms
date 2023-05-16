@@ -35,6 +35,23 @@ class BinaryTree:
         traverse(self.root, values)
         return values
 
+    def find_maximum_value(self):
+        if self.root is None:
+            return None
+
+        max_value = self.root.value
+        stack = [self.root]
+        while stack:
+            current = stack.pop()
+            if current.value > max_value:
+                max_value = current.value
+            if current.left is not None:
+                stack.append(current.left)
+            if current.right is not None:
+                stack.append(current.right)
+
+        return max_value
+
 
 class Node:
     def __init__(self, value, left=None, right=None):
