@@ -1,3 +1,23 @@
+class InvalidOperationError(Exception):
+    pass
+
+
+class Queue:
+    def __init__(self):
+        self.items = []
+
+    def enqueue(self, value):
+        self.items.append(value)
+
+    def dequeue(self):
+        if self.is_empty():
+            raise IndexError("Queue is empty")
+        return self.items.pop(0)
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+
 class BinaryTree:
     def __init__(self, root=None):
         self.root = root
@@ -43,6 +63,26 @@ class Node:
         self.right = right
 
 
+def breadth_first(tree):
+    result = []
+    if not tree.root:
+        return result
+
+    queue = Queue()
+    queue.enqueue(tree.root)
+
+    while not queue.is_empty():
+        node = queue.dequeue()
+        result.append(node.value)
+
+        if node.left:
+            queue.enqueue(node.left)
+        if node.right:
+            queue.enqueue(node.right)
+
+    return result
+
+
 if __name__ == '__main__':
     bt = BinaryTree()
     node3 = Node(3)
@@ -53,6 +93,5 @@ if __name__ == '__main__':
     node18 = Node(18, node5, node11)
     node4 = Node(4, node7, node18)
     bt.root = node4
-    print(bt.pre_order())
-    print(bt.in_order())
-    print(bt.post_order())
+    print(breadth_first(bt))
+
