@@ -20,15 +20,15 @@ def merge_sort_year(arr):
     left = merge_sort_year(left)
     right = merge_sort_year(right)
 
-    return merge_year(left, right)
+    return merge_year(left, right, "year")
 
 
-def merge_year(left, right):
+def merge_year(left, right, sort_key):
     result = []
     i = j = 0
 
     while i < len(left) and j < len(right):
-        if compare_year(left[i], right[j]) == -1:
+        if int(left[i][sort_key]) > int(right[j][sort_key]):
             result.append(left[i])
             i += 1
         else:
@@ -43,7 +43,7 @@ def merge_year(left, right):
         result.append(right[j])
         j += 1
 
-    return result
+    return [movie["title"] for movie in result]
 
 
 def compare_title(a, b):
@@ -98,7 +98,7 @@ def merge_title(left, right):
         result.append(right[j])
         j += 1
 
-    return result
+    return [movie["title"] for movie in result]
 
 
 if __name__ == '__main__':
